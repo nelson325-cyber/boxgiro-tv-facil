@@ -4,8 +4,415 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BoxGiro · TV fácil</title>
+<meta name="description" content="BoxGiro: a televisão fácil para os seus pais. Box configurada com seis botões grandes, fotos da família na TV, rádios, jogos e ajuda à distância. 55€, paga na entrega.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://boxgiro.pt/">
+<meta property="og:title" content="BoxGiro · A televisão fácil para os seus pais">
+<meta property="og:description" content="Box configurada + player ilimitado por 55€. Paga na entrega, 30 dias para devolver. Só o launcher: 18€.">
+<meta property="og:image" content="https://boxgiro.pt/thumb.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F1B2D">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: caloroso e direto, fala com quem compra para os pais e para os avós.
+   IDEA: a caixa pronta a ligar, com o ecrã principal do BoxGiro e o foco amarelo.
+   PICTURE: a box, o comando e a TV com o ecrã real; logo a seguir o vídeo.
+   COLOUR and TYPE: azul-noite da app, amarelo do foco, as seis cores das teclas; Atkinson Hyperlegible.
+   LAYOUT: produto e preço no primeiro ecrã, vídeo logo abaixo, compra sempre no WhatsApp. */
+:root{color-scheme:light dark;--navy:#0F1B2D;--deep:#08111E;--surf:#18263B;--line:#2B3C57;--y:#FFD23F;--ink:#FFF8EC;--muted:#C2CCDA;--paper:#FFFFFF;--dark:#0F1B2D;--wa:#1FA855;--blue:#2457C5;--amber:#A16207;--green:#157A43;--purple:#6D3FD8;--teal:#0E7490;--red:#B4232A}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--navy);color:var(--ink);font:17px/1.55 'Atkinson Hyperlegible',system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+img,video{display:block;max-width:100%;height:auto}
+.band{padding:clamp(40px,6vw,84px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,h3{line-height:1.08;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,4.6vw,54px)}
+h2{font-size:clamp(30px,3.6vw,44px)}
+h3{font-size:22px}
+p{margin:0}
+.lead{font-size:clamp(18px,1.8vw,20px);color:var(--muted);max-width:62ch}
+.small{font-size:15px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:12px 26px;border-radius:999px;font:700 18px 'Atkinson Hyperlegible',system-ui,sans-serif;text-decoration:none;border:3px solid transparent;cursor:pointer;text-align:center}
+.btn:focus-visible,input:focus-visible,.navbtn:focus-visible,summary:focus-visible{outline:4px solid var(--y);outline-offset:3px}
+.btn.y{background:var(--y);color:var(--navy)}
+.btn.wa{background:var(--wa);color:#fff}
+.btn.o{border-color:currentColor;background:transparent}
+.btn.n{background:var(--navy);color:var(--ink)}
+.btn.big{min-height:62px;font-size:20px;width:100%}
+.btn svg{width:24px;height:24px;flex:none}
+/* topo */
+header{position:sticky;top:0;z-index:10;background:rgba(15,27,45,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:22px;padding:10px max(5vw,16px);max-width:1340px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font:700 26px 'Atkinson Hyperlegible',system-ui,sans-serif;text-decoration:none;letter-spacing:-.5px}
+.logo .mark{width:42px;height:42px;border-radius:11px;background:var(--deep);box-shadow:0 0 0 2px var(--line);display:grid;place-items:center}
+.logo b{color:var(--y)}
+.links{display:flex;gap:20px;margin-left:auto;flex-wrap:wrap}
+.links a{text-decoration:none;color:var(--muted);font-weight:700}
+.links a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:8px 18px;font-size:16px}
+@media(max-width:900px){.links{display:none}.nav .btn{margin-left:auto}}
+/* produto */
+.hero{background:radial-gradient(90% 80% at 30% 10%,#1B3360 0%,var(--navy) 62%)}
+.prod{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.prod h1{margin-bottom:14px}
+.pic{position:relative}
+.pic img{width:100%;filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
+.tag{position:absolute;left:50%;bottom:1%;translate:-50% 0;background:var(--y);color:var(--navy);font-weight:700;padding:8px 16px;border-radius:999px;font-size:16px;transform:rotate(-4deg);box-shadow:0 10px 20px rgba(0,0,0,.3)}
+.buybox{background:var(--surf);border:2px solid var(--line);border-radius:28px;padding:clamp(22px,3vw,34px)}
+.price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 4px}
+.price strong{font-size:clamp(64px,8vw,88px);line-height:1;color:var(--y);letter-spacing:-2px}
+.price span{font-weight:700;font-size:18px}
+.pay{list-style:none;padding:0;margin:20px 0 22px;display:grid;gap:12px}
+.pay li{display:flex;gap:12px;align-items:center;font-size:17px}
+.pay svg{width:28px;height:28px;flex:none;color:var(--y)}
+.incl{margin-top:16px;font-size:15px;color:var(--muted)}
+.alt{display:block;margin-top:16px;text-align:center;font-weight:700;color:var(--y)}
+@media(max-width:860px){.prod{grid-template-columns:minmax(0,1fr);gap:20px}.prod .intro{display:contents}.prod h1{order:1;margin:0}.prod .lead{order:2}.pic{order:3;margin-top:14px}.prod .buybox{order:4;margin-top:4px!important}}
+/* garantias */
+.trust{background:var(--y);color:var(--navy);padding:16px max(5vw,16px)}
+.trustrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 20px}
+.trustrow div{display:flex;align-items:center;gap:10px;font-size:17px}
+.trustrow svg{width:28px;height:28px;flex:none}
+@media(max-width:700px){.trustrow{grid-template-columns:repeat(2,minmax(0,1fr))}.trustrow div{font-size:15px}}
+.calm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.calm div{background:var(--navy);border:2px solid var(--line);border-radius:22px;padding:24px}
+.calm p{color:var(--muted);margin-top:10px;font-size:16px}
+@media(max-width:860px){.calm{grid-template-columns:minmax(0,1fr)}}
+/* vídeo */
+.vid{background:var(--deep);text-align:center}
+.vid .lead{margin:12px auto 0}
+.phone{position:relative;width:min(84vw,340px);margin:32px auto 0;background:#0A0A0C;border-radius:42px;padding:11px;box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 0 0 2px #3a3a40}
+.phone video{width:100%;aspect-ratio:9/16;border-radius:32px;background:#000;object-fit:cover}
+.vid .cta{max-width:420px;margin:30px auto 0}
+/* teclas */
+.paper{background:var(--paper);color:var(--dark)}
+.paper .lead{color:#44546B}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:34px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tile{border-radius:26px;padding:26px 26px 28px;color:#fff;display:flex;flex-direction:column;gap:10px;min-height:240px;box-shadow:0 14px 28px rgba(15,27,45,.16)}
+.tile .ic{width:46px;height:46px;margin-bottom:auto}
+.tile h3{margin-top:26px}
+.tile p{color:#F2F5FB;font-size:16px}
+.tile.focus{outline:6px solid var(--y);outline-offset:4px}
+@media(max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.tiles{grid-template-columns:minmax(0,1fr)}.tile{min-height:0}}
+.easy{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:42px;padding-top:32px;border-top:2px solid #E3E8F0}
+.easy div{font-size:16px;color:#33445C}
+.easy b{display:block;font-size:19px;color:var(--dark);margin-bottom:4px}
+@media(max-width:900px){.easy{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.easy{grid-template-columns:minmax(0,1fr)}}
+/* ecrãs */
+.shots{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:thin}
+.shots figure{flex:0 0 min(78vw,600px);margin:0;scroll-snap-align:start}
+.shots img{border-radius:16px;border:2px solid var(--line);aspect-ratio:16/9;width:100%;object-fit:cover;background:var(--surf)}
+.shots figcaption{margin-top:12px;font-weight:700;font-size:18px}
+.shots figcaption span{display:block;font-weight:400;font-size:15px;color:var(--muted)}
+.ctrl{display:flex;gap:12px}
+.navbtn{width:52px;height:52px;border-radius:50%;border:2px solid var(--line);background:var(--surf);color:var(--ink);font-size:24px;cursor:pointer}
+.navbtn:hover{border-color:var(--y)}
+/* como comprar */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:s}
+.steps div{display:flex;gap:14px;align-items:flex-start}
+.steps div:before{counter-increment:s;content:counter(s);flex:none;width:46px;height:46px;border-radius:50%;background:var(--y);color:var(--navy);display:grid;place-items:center;font-weight:700;font-size:22px}
+.steps b{display:block;font-size:19px}
+.steps span{color:var(--muted);font-size:16px}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.steps{grid-template-columns:minmax(0,1fr)}}
+.center{text-align:center;margin-top:36px}
+.center .btn{min-width:min(100%,380px)}
+/* só o launcher */
+.yel{background:var(--y);color:var(--navy)}
+.dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,5vw,64px);align-items:start}
+.dl .lead{color:#3A3110;margin-top:14px}
+.dl ul{margin:18px 0 24px;padding-left:22px;font-size:17px}
+.dl li{margin:6px 0}
+.box{background:var(--navy);color:var(--ink);border-radius:28px;padding:clamp(22px,4vw,36px);box-shadow:0 30px 60px rgba(15,27,45,.35)}
+.box h3{margin-bottom:8px}
+.box label{display:block;font-weight:700;font-size:18px;margin:18px 0 10px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row input{flex:1 1 220px;min-height:54px;border-radius:14px;border:2px solid var(--line);background:var(--deep);color:var(--ink);font:700 19px 'Atkinson Hyperlegible',monospace;padding:10px 16px;letter-spacing:1px;text-transform:uppercase}
+#estado{min-height:26px;margin-top:14px;font-size:16px;color:var(--muted)}
+#estado.bad{color:#FF8A80}#estado.good{color:#7BE3A8}
+#pronto{display:none;margin-top:16px;padding-top:18px;border-top:1px solid var(--line)}
+#pronto ol{margin:14px 0 0;padding-left:22px;color:var(--muted);font-size:16px}
+@media(max-width:860px){.dl{grid-template-columns:minmax(0,1fr)}}
+/* perguntas */
+.faq{max-width:860px}
+details{border-bottom:2px solid #E3E8F0;padding:18px 0}
+summary{cursor:pointer;font-weight:700;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:'+';font-size:26px;line-height:1;color:var(--blue)}
+details[open] summary:after{content:'–'}
+details p{margin-top:10px;color:#33445C}
+/* revendedores */
+.rev{background:linear-gradient(160deg,#13284A,var(--deep))}
+.revgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.who{display:grid;gap:14px;margin-top:24px}
+.who div{background:var(--surf);border:2px solid var(--line);border-radius:20px;padding:18px 20px}
+.who b{display:block;font-size:19px}
+.who span{color:var(--muted);font-size:16px}
+.rev .steps{grid-template-columns:minmax(0,1fr);gap:22px}
+.rev .note{margin-top:22px;font-size:15px;color:var(--muted)}
+@media(max-width:860px){.revgrid{grid-template-columns:minmax(0,1fr)}}
+footer{background:var(--deep);color:var(--muted);font-size:15px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 48px}
+footer b{color:var(--ink)}
+@media(max-width:760px){footer .wrap{grid-template-columns:minmax(0,1fr)}}
+/* botão fixo no telemóvel */
+.sticky{display:none}
+@media(max-width:700px){.sticky{display:flex;font-size:17px;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;box-shadow:0 12px 30px rgba(0,0,0,.45)}body{padding-bottom:84px}}
+</style>
 </head>
 <body>
-<p>Placeholder - full content will be uploaded</p>
+<header><nav class="nav" aria-label="Principal">
+  <a class="logo" href="#topo"><span class="mark"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M4,4h16a2,2 0 0 1 2,2v10a2,2 0 0 1 -2,2H4a2,2 0 0 1 -2,-2V6a2,2 0 0 1 2,-2z" fill="none" stroke="#FFD23F" stroke-width="2"/><path d="M10,8.2l5,2.8 -5,2.8z" fill="#FFF8EC"/><path d="M8,21h8" stroke="#FFD23F" stroke-width="2" stroke-linecap="round"/></svg></span><span>Box<b>Giro</b></span></a>
+  <div class="links"><a href="#video">Vídeo</a><a href="#funcoes">Funções</a><a href="#comprar">Comprar</a><a href="#launcher">Só o launcher</a><a href="#revendedores">Revendedores</a></div>
+  <a class="btn wa" href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20comprar%20a%20BoxGiro%20configurada%20(box%20%2B%20player%20ilimitado)%20por%2055%E2%82%AC."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Comprar</a>
+</nav></header>
+
+<section class="band hero" id="topo">
+  <div class="wrap prod">
+    <div class="pic"><img src="produto.webp" alt="Box BoxGiro com comando, ligada a uma TV que mostra o ecrã principal com seis botões grandes" width="1600" height="1120"><span class="tag">Já configurada</span></div>
+    <div class="intro">
+      <h1>Ofereça aos seus pais uma televisão fácil</h1>
+      <p class="lead">As fotos dos netos na TV, as rádios, jogos e ajuda à distância, numa box que chega pronta a usar. Seis botões grandes, tudo com as setas e o OK.</p>
+      <div class="buybox" style="margin-top:24px">
+        <p class="small" style="font-weight:700;color:var(--ink)">Box BoxGiro configurada + player ilimitado</p>
+        <div class="price"><strong>55€</strong><span>com comando</span></div>
+        <ul class="pay">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 4h13v11H1zM14 8h4l4 4v3h-8z"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg><span><b>Paga na entrega</b>, à cobrança, ao carteiro</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20M6 15h4"/></svg><span>Ou cartão <b>em até 4 vezes</b> ou <b>Klarna</b></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span><b>30 dias para devolver</b> se não se adaptarem</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span><b>Garantia de 3 anos</b>, com fatura</span></li>
+        </ul>
+        <a class="btn wa big" href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20comprar%20a%20BoxGiro%20configurada%20(box%20%2B%20player%20ilimitado)%20por%2055%E2%82%AC."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Comprar pelo WhatsApp</a>
+        <p class="incl">Prefere falar com uma pessoa? Ligue <b>938 183 800</b>.</p>
+        <a class="alt" href="#launcher">Já tem box? Só o launcher por 18€</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Garantias">
+  <div class="wrap trustrow">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span><b>30 dias</b> para devolver</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span><b>3 anos</b> de garantia</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 4h13v11H1zM14 8h4l4 4v3h-8z"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg><span><b>Paga</b> na entrega</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span><b>Ajuda</b> por telefone</span></div>
+  </div>
+</section>
+
+<section class="band vid" id="video">
+  <div class="wrap">
+    <h2>Veja como funciona em 1 minuto</h2>
+    <p class="lead">Players, fotos da família no ecrã, rádios, jogos, perguntas com a voz e ajuda à distância.</p>
+    <div class="phone"><video src="boxgiro.mp4" poster="poster.jpg" controls playsinline preload="metadata" aria-label="Vídeo de apresentação do BoxGiro"></video></div>
+    <div class="cta"><a class="btn wa big" href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20comprar%20a%20BoxGiro%20configurada%20(box%20%2B%20player%20ilimitado)%20por%2055%E2%82%AC."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Quero a minha BoxGiro · 55€</a><p class="small" style="margin-top:12px">Paga na entrega · Cartão em até 4x · Klarna · 30 dias para devolver</p></div>
+  </div>
+</section>
+
+<section class="band" id="calma" style="background:var(--surf)">
+  <div class="wrap">
+    <h2 style="margin-bottom:28px">Sem complicar a vida aos seus pais</h2>
+    <div class="calm">
+      <div><h3>A box da MEO fica igual</h3><p>Os canais continuam como sempre. O BoxGiro liga-se a outra entrada HDMI da TV e explicamos por telefone como passar de uma para a outra.</p></div>
+      <div><h3>Ajuda à distância com quem escolher</h3><p>Só liga quando alguém em casa aceita no ecrã. Se preferir, fica só para a família, ou desligada.</p></div>
+      <div><h3>As fotos dos netos na TV</h3><p>A família envia fotos do telemóvel, pelo Wi-Fi da casa, e elas passam como porta-retrato quando a TV está parada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="funcoes">
+  <div class="wrap">
+    <div class="head"><h2>Tudo o que precisa, em seis botões</h2><p class="lead">É exatamente o que aparece na TV. Escolhe com as setas, carrega OK, e o botão Casa volta sempre aqui.</p></div>
+    <div class="tiles">
+      <div class="tile focus" style="background:var(--blue)"><div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%"><path d="M4,4h16a2,2 0 0 1 2,2v10a2,2 0 0 1 -2,2H4a2,2 0 0 1 -2,-2V6a2,2 0 0 1 2,-2z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10,8.2l5,2.8 -5,2.8z" fill="#FFFFFF"/><path d="M8,21h8" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Players</h3><p>O player ilimitado e os outros players de vídeo da box, arrumados num só sítio. Um botão, e abre o que quiser.</p></div>
+      <div class="tile" style="background:var(--amber)"><div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%"><path d="M5,3h14a2,2 0 0,1 2,2v14a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-14a2,2 0 0,1 2,-2z" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M7,8.5a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21,15l-5,-5L5,21" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Fotos e papel de parede</h3><p>Aponte a câmara do telemóvel ao código da TV e escolha as fotos. Passam como porta-retrato quando a TV fica parada.</p></div>
+      <div class="tile" style="background:var(--green)"><div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%"><path d="M6,3h12a3,3 0 0,1 3,3v12a3,3 0 0,1 -3,3h-12a3,3 0 0,1 -3,-3v-12a3,3 0 0,1 3,-3z" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.8,8a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0" fill="#FFFFFF"/><path d="M14.8,8a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0" fill="#FFFFFF"/><path d="M10.8,12a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0" fill="#FFFFFF"/><path d="M6.8,16a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0" fill="#FFFFFF"/><path d="M14.8,16a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0" fill="#FFFFFF"/></svg></div><h3>Jogos</h3><p>Paciência, Damas, Dominó, Sudoku, Blocos e Bola e Tijolos. Só com o comando, e o recorde fica guardado.</p></div>
+      <div class="tile" style="background:var(--purple)"><div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%"><path d="M12,2a3,3 0 0,1 3,3v6a3,3 0 0,1 -6,0v-6a3,3 0 0,1 3,-3z" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5,11a7,7 0 0,0 14,0M12,18v4M8,22h8" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Perguntar</h3><p>Pergunte com a voz: os jogos de hoje, uma receita de bacalhau à Brás, o tempo para amanhã. A resposta aparece no ecrã.</p></div>
+      <div class="tile" style="background:var(--teal)"><div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%"><path d="M9,18V5l12,-2v13" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M3,18a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M15,16a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Rádio e Música</h3><p>Antena 1, Renascença, TSF, Rádio Amália, M80, Rádio Comercial e mais. Escolha a estação e oiça.</p></div>
+      <div class="tile" style="background:var(--red)"><div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%"><path d="M3,14v-2a9,9 0 0,1 18,0v2" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4,14h1a2,2 0 0,1 2,2v3a2,2 0 0,1 -2,2h-1a2,2 0 0,1 -2,-2v-3a2,2 0 0,1 2,-2z" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M19,14h1a2,2 0 0,1 2,2v3a2,2 0 0,1 -2,2h-1a2,2 0 0,1 -2,-2v-3a2,2 0 0,1 2,-2z" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Ajuda à distância</h3><p>Um filho, um amigo ou o nosso suporte liga-se à box para ajudar, sempre com a autorização de quem está em casa.</p></div>
+    </div>
+    <div class="easy">
+      <div><b>Letras grandes</b>Contraste forte e textos curtos, pensados para ler do sofá.</div>
+      <div><b>Não se perde</b>O botão Casa do comando volta sempre ao ecrã do BoxGiro.</div>
+      <div><b>Box mais leve</b>Limpeza automática da memória, todos os dias às 4h.</div>
+      <div><b>Definições à parte</b>Só abrem depois de confirmar, para ninguém mexer sem querer.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="ecras">
+  <div class="wrap">
+    <div class="head"><div><h2>Os ecrãs, tal como aparecem na TV</h2><p class="small" style="margin-top:10px">Capturas reais de uma box com o BoxGiro 1.1.</p></div>
+      <div class="ctrl"><button class="navbtn" id="prev" aria-label="Ecrã anterior">‹</button><button class="navbtn" id="next" aria-label="Ecrã seguinte">›</button></div></div>
+    <div class="shots" id="shots" tabindex="0" aria-label="Ecrãs do BoxGiro"></div>
+  </div>
+</section>
+
+<section class="band" id="comprar" style="background:var(--deep)">
+  <div class="wrap">
+    <div class="head"><h2>Como comprar</h2><p class="lead">Tudo é tratado diretamente comigo, no WhatsApp ou pelo telefone 938 183 800.</p></div>
+    <div class="steps">
+      <div><p><b>Mande mensagem</b><span>Carregue em «Comprar pelo WhatsApp» e diga para quem é a box.</span></p></div>
+      <div><p><b>Eu configuro</b><span>Ponho o nome da pessoa no ecrã e deixo tudo pronto a usar.</span></p></div>
+      <div><p><b>Enviamos</b><span>A box segue para a morada que indicar.</span></p></div>
+      <div><p><b>Paga como preferir</b><span>Na entrega (à cobrança), com cartão em até 4 vezes ou com Klarna. Tem 30 dias para devolver.</span></p></div>
+    </div>
+    <div class="center"><a class="btn wa big" href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20comprar%20a%20BoxGiro%20configurada%20(box%20%2B%20player%20ilimitado)%20por%2055%E2%82%AC." style="width:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Comprar a BoxGiro · 55€</a></div>
+  </div>
+</section>
+
+<section class="band yel" id="launcher">
+  <div class="wrap dl">
+    <div>
+      <h2>Já tem box? Compre só o launcher</h2>
+      <div class="price" style="margin-top:10px"><strong style="color:var(--navy)">18€</strong><span>pagamento único</span></div>
+      <p class="lead">Para pôr numa Android TV box que já tenha em casa.</p>
+      <ul><li>O ecrã fácil do BoxGiro, com os seis botões</li><li>Player ilimitado</li><li>Ajuda à distância (RustDesk)</li><li>Jogos e porta-retrato com as fotos da família</li><li>Instruções passo a passo e ajuda pelo WhatsApp</li></ul>
+      <a class="btn n" href="https://wa.me/351938183800?text=Ol%C3%A1!%20J%C3%A1%20tenho%20uma%20box%20e%20quero%20o%20launcher%20BoxGiro%20por%2018%E2%82%AC."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Comprar o launcher · 18€</a>
+      <p style="margin-top:12px;font-size:15px">Para boxes com Android 5.0 ou mais recente. Diga-nos o modelo da sua box e confirmamos antes de pagar.</p>
+    </div>
+    <form class="box" id="form" autocomplete="off">
+      <h3>Já comprou? Descarregue aqui</h3>
+      <p class="small">Depois do pagamento recebe um código por mensagem. O ficheiro é um .zip com o APK e as instruções (6,3 MB).</p>
+      <label for="codigo">Código de download</label>
+      <div class="row"><input id="codigo" name="codigo" placeholder="BOXGIRO-XXXX-XXXX" spellcheck="false" autocapitalize="characters"><button class="btn y" id="abrir" type="submit">Desbloquear</button></div>
+      <p id="estado" role="status"></p>
+      <div id="pronto">
+        <button class="btn y" id="guardar" type="button">Guardar BoxGiro-v1.1.zip</button>
+        <ol><li>Abra o .zip e copie o BoxGiro-v1.1.apk para uma pen USB.</li><li>Na box, abra o APK com o gestor de ficheiros e instale.</li><li>Carregue no botão Casa e escolha BoxGiro como ecrã principal, «Sempre».</li></ol>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="band paper" id="perguntas">
+  <div class="wrap faq">
+    <h2 style="margin-bottom:20px">Perguntas frequentes</h2>
+    <details><summary>Como funciona o pagamento?</summary><p>Pode pagar na entrega, à cobrança: paga ao carteiro quando a box chega. Também pode pagar com cartão bancário em até 4 vezes ou com Klarna. Combinamos tudo no WhatsApp ou por telefone antes de a box seguir.</p></details>
+    <details><summary>E se os meus pais não se adaptarem?</summary><p>Tem 30 dias, a contar da entrega, para devolver a box. Fale connosco no WhatsApp e combinamos a devolução.</p></details>
+    <details><summary>Tem garantia?</summary><p>Sim. A box tem a garantia legal de 3 anos e segue com fatura. Se avariar, fale connosco e resolvemos.</p></details>
+    <details><summary>E a box da MEO, NOS ou Vodafone?</summary><p>Continua igual, com os canais de sempre. O BoxGiro liga-se a outra entrada HDMI da televisão. Para passar de uma para a outra usa-se o botão de entrada (Source ou Input) do comando da TV, e explicamos por telefone se for preciso.</p></details>
+    <details><summary>Posso encomendar por telefone?</summary><p>Sim. Ligue para o 938 183 800 e tratamos de tudo consigo.</p></details>
+    <details><summary>A box já vem pronta a usar?</summary><p>Sim. Eu configuro a box antes de a enviar: o BoxGiro fica como ecrã principal, com o nome da pessoa, os players e a ajuda à distância. Em casa é só ligar à TV e ao Wi-Fi.</p></details>
+    <details><summary>O BoxGiro traz canais ou listas?</summary><p>Não. O BoxGiro é o ecrã inicial da box: organiza os players, as fotos, os jogos e a rádio. Não inclui canais, conteúdos nem listas, e não os vendemos.</p></details>
+    <details><summary>Precisa de internet?</summary><p>Os players, a rádio e o Perguntar precisam de internet. Os jogos funcionam sem internet, e o envio de fotos usa o Wi-Fi de casa.</p></details>
+    <details><summary>Como funciona a ajuda à distância?</summary><p>Com a app RustDesk, que fica instalada na box. A pessoa em casa carrega em «Ajuda à distância» e só depois de aceitar no ecrã é que quem ajuda vê a TV. Se preferir, o acesso fica só para a família, ou desligamos esta função.</p></details>
+    <details><summary>Como envio as fotos para a TV?</summary><p>Em «Fotos e Vídeos», escolha «Enviar fotos do telemóvel». Aponte a câmara do telemóvel ao código que aparece na TV, escolha as fotos e carregue em Enviar. O telemóvel tem de estar no Wi-Fi da casa onde está a box.</p></details>
+  </div>
+</section>
+
+<section class="band rev" id="revendedores">
+  <div class="wrap revgrid">
+    <div>
+      <h2>Seja revendedor BoxGiro</h2>
+      <p class="lead" style="margin-top:14px">Tem uma loja, vende eletrónica ou conhece muitas famílias com pais e avós em casa? Venda a BoxGiro na sua zona.</p>
+      <div class="who">
+        <div><b>Lojas de eletrónica e informática</b><span>Um produto pronto a vender, fácil de explicar ao balcão.</span></div>
+        <div><b>Técnicos e instaladores</b><span>Para quem já instala TV, internet ou ajuda famílias em casa.</span></div>
+        <div><b>Lares, centros de dia e associações</b><span>Uma TV simples para quem tem pouca paciência para tecnologia.</span></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:26px;margin-bottom:22px">Como funciona</h3>
+      <div class="steps">
+        <div><p><b>Fale comigo no WhatsApp</b><span>Diga onde está e como vende: loja, online ou porta a porta.</span></p></div>
+        <div><p><b>Recebe as condições de revenda</b><span>Preços por quantidade e formas de pagamento, combinados consigo.</span></p></div>
+        <div><p><b>Encomenda as boxes</b><span>Seguem já configuradas com o BoxGiro, prontas a entregar ao cliente.</span></p></div>
+        <div><p><b>Divulga com o nosso material</b><span>O vídeo, as imagens e os textos desta página, para usar nas suas redes.</span></p></div>
+      </div>
+      <a class="btn wa big" href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20saber%20como%20ser%20revendedor%20BoxGiro." style="margin-top:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Quero ser revendedor</a>
+      <p class="note">As condições de revenda são combinadas caso a caso pelo WhatsApp 938 183 800.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="band">
+  <div class="wrap">
+    <div><p style="font-size:22px"><b>Box<span style="color:var(--y)">Giro</span></b> · um produto Assistech Portugal, Faro</p>
+      <p style="margin-top:10px">O BoxGiro é um ecrã inicial (launcher) para Android TV box e não inclui canais, conteúdos nem listas. As apps que cada pessoa instala e o que vê nelas são da sua responsabilidade. Os nomes das rádios, das apps e dos meios de pagamento pertencem aos seus donos.</p></div>
+    <div><p><b>WhatsApp e telefone:</b> 938 183 800</p><p style="margin-top:6px"><b>Loja:</b> <a href="https://assistechportugal.store">assistechportugal.store</a></p><p style="margin-top:6px"><a href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20comprar%20a%20BoxGiro%20configurada%20(box%20%2B%20player%20ilimitado)%20por%2055%E2%82%AC.">Comprar pelo WhatsApp</a> · <a href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20saber%20como%20ser%20revendedor%20BoxGiro.">Revendedores</a></p></div>
+  </div>
+</footer>
+
+<a class="btn wa sticky" href="https://wa.me/351938183800?text=Ol%C3%A1!%20Quero%20comprar%20a%20BoxGiro%20configurada%20(box%20%2B%20player%20ilimitado)%20por%2055%E2%82%AC."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Comprar · 55€ · paga na entrega</a>
+
+<script>
+{
+const SHOTS = [
+  ['inicio', 'Ecrã principal', 'Seis botões grandes. O foco amarelo mostra onde está.'],
+  ['players', 'Players', 'Os players de vídeo instalados na box, num só sítio.'],
+  ['enviar-fotos', 'Enviar fotos do telemóvel', 'Aponte a câmara ao código e escolha as fotos.'],
+  ['jogos', 'Jogos', 'Seis jogos simples, para jogar só com o comando.'],
+  ['damas', 'Damas', 'Contra a TV, com as regras de sempre.'],
+  ['paciencia', 'Paciência', 'As cartas como na mesa, com setas e OK.'],
+  ['blocos', 'Blocos', 'Largo ou Clássico, e o recorde fica guardado.'],
+  ['radio', 'Rádio e Música', 'As rádios portuguesas, de graça.'],
+];
+const shots = document.getElementById('shots');
+shots.innerHTML = SHOTS.map(s => `<figure><img src="ecras/${s[0]}.jpg" alt="Ecrã ${s[1]} do BoxGiro" loading="lazy" width="1280" height="720"><figcaption>${s[1]}<span>${s[2]}</span></figcaption></figure>`).join('');
+const step = d => { const f = shots.querySelector('figure'); shots.scrollBy({ left: d * (f.offsetWidth + 20), behavior: 'smooth' }); };
+document.getElementById('prev').addEventListener('click', () => step(-1));
+document.getElementById('next').addEventListener('click', () => step(1));
+shots.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); step(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); } });
+
+// download com código: o .zip está cifrado (AES-GCM) e só abre com o código certo
+const form = document.getElementById('form'), input = document.getElementById('codigo'), estado = document.getElementById('estado');
+const pronto = document.getElementById('pronto'), guardar = document.getElementById('guardar'), abrir = document.getElementById('abrir');
+let pacote = null, ficheiro = null, downloads = null;
+const say = (t, cls = '') => { estado.textContent = t; estado.className = cls; };
+try { if (window.claude && window.claude.use) window.claude.use('downloads').then(d => { downloads = d; }).catch(() => {}); } catch (e) {}
+const b64 = s => { const bin = atob(s), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; };
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const code = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (code.length < 8) { say('Escreva o código completo, como está na mensagem.', 'bad'); return; }
+  abrir.disabled = true; say('A verificar o código…');
+  try {
+    if (!pacote) { const r = await fetch('apk.json'); if (!r.ok) throw new Error('rede'); pacote = await r.json(); }
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(code), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(pacote.salt), iterations: pacote.it, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    let plain;
+    try { plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(pacote.iv), additionalData: new TextEncoder().encode('boxgiro') }, key, b64(pacote.data)); }
+    catch (err) { say('Código errado. Confirme as letras e os números, ou peça ajuda no WhatsApp.', 'bad'); return; }
+    ficheiro = new Blob([plain]);
+    say('Código certo. Já pode guardar o ficheiro.', 'good');
+    pronto.style.display = 'block'; guardar.focus();
+  } catch (err) { say('Não foi possível abrir o ficheiro agora. Tente de novo daqui a pouco.', 'bad'); }
+  finally { abrir.disabled = false; }
+});
+guardar.addEventListener('click', async () => {
+  if (!ficheiro) return;
+  if (!downloads) {
+    try {
+      const url = URL.createObjectURL(ficheiro), a = document.createElement('a');
+      a.href = url; a.download = pacote.name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      say('Download iniciado. Siga os três passos abaixo.', 'good');
+    } catch (e) { say('Não foi possível guardar o ficheiro neste navegador. Tente noutro navegador.', 'bad'); }
+    return;
+  }
+  try { await downloads.save({ filename: pacote.name, data: ficheiro }); say('Ficheiro guardado. Siga os três passos abaixo.', 'good'); }
+  catch (err) {
+    const c = err && err.code;
+    if (c === 'declined') say('Download cancelado. Pode carregar de novo quando quiser.');
+    else if (c === 'rate_limited') say('Espere uns segundos e carregue de novo.');
+    else say('Este ecrã não deixa guardar ficheiros. Abra a página num navegador de computador ou telemóvel.', 'bad');
+  }
+});
+}
+</script>
 </body>
 </html>
